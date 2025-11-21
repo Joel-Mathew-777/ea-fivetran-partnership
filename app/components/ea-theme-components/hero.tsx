@@ -4,7 +4,7 @@ import Link from "next/link";
 // Hero Section Component
 const HeroSection = () => {
   return (
-    <section className="text-white py-20 px-6 max-h-[calc(100vh-65px] items-center flex">
+    <section className="text-white py-20 px-6 min-h-[50vh] items-center flex bg-gray-50 dark:bg-primary-dark-gray transition-colors">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-6">
           {/* Express Analytics Logo */}
@@ -45,7 +45,7 @@ const HeroSection = () => {
           accelerating insights and AI readiness.
         </p>
         <div className="flex gap-4">
-          <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+          <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-bold transition-colors">
             Talk to Us
           </button>
           <Link

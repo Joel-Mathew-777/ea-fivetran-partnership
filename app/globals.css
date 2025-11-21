@@ -9,6 +9,7 @@
   --primary-red: #DC1B36;
   --accent-gray:  #686B6F;
   --primary-dark-gray: #111827;
+  --secondary-dark-gray: #141c30;
 }
 
 @theme inline {
@@ -19,6 +20,7 @@
   --color-primary_red: var(--primary-red);
   --color-accent_gray: var(--accent-gray);
   --color-primary-dark-gray: var(--primary-dark-gray);
+  --color-secondary-dark-gray: var(--secondary-dark-gray);
 }
 
 /* @media (prefers-color-scheme: dark) {
