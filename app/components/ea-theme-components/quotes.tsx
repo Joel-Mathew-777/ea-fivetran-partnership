@@ -76,15 +76,7 @@ const PressReleaseSection = () => {
 
         {/* RIGHT SIDE SLIDER CARD */}
         <div className="relative">
-          <div className="
-            bg-white dark:bg-gray-800 
-            p-6 md:p-8 
-            rounded-2xl shadow-xl 
-            min-h-[300px] 
-            flex flex-col md:flex-row 
-            items-center md:items-start 
-            gap-6
-          ">
+          <div className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-xl min-h-[300px] flex flex-col md:flex-row items-center md:items-start gap-6">
 
             {/* WRAPPER FOR LEFT SIDE IMAGE */}
             <div className="flex flex-col items-center md:items-start">
@@ -106,11 +98,7 @@ const PressReleaseSection = () => {
               </p>
 
               {/* NAME + TITLE + LOGO */}
-              <div className="
-                flex flex-col md:flex-row 
-                items-center md:items-center 
-                gap-4 mt-4
-              ">
+              <div className="flex flex-col md:flex-row items-center md:items-center gap-4 mt-4">
                 {/* Name + Title */}
                 <div className="text-center md:text-left">
                   <p className="font-bold text-gray-900 dark:text-white">
