@@ -85,7 +85,7 @@ export default function StatusMonitor() {
           <div
             role="dialog"
             aria-label="Website Status Monitor"
-            className="fixed bottom-24 right-6 z-50 w-[420px] max-h-[650px] rounded-2xl bg-white dark:bg-gray-900 shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden"
+            className="fixed bottom-24 right-6 z-50 w-[90%] sm:w-[420px] max-h-[650px] rounded-2xl bg-white dark:bg-gray-900 shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-[#DC1B36] to-red-700 p-6 text-white relative">

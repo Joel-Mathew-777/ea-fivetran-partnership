@@ -15,7 +15,7 @@ interface BenefitItemProps {
 // Benefit Item Component
 const BenefitItem = ({ icon: Icon, title, description }: BenefitItemProps) => {
   return (
-    <div className="flex gap-4 flex-1 items-center">
+    <div className="flex gap-4 items-center mb-5 h-full">
       <div className="bg-red-100 dark:bg-primary_red p-3 rounded-lg">
         <Icon className="w-6 h-6 text-red-600 dark:text-white" />
       </div>
