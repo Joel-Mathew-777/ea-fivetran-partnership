@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50 shadow-sm">
+      <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 fixed top-[-4px] pb-[4px] left-0 w-full mt-1 z-50 shadow-sm -mt-px">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
 
@@ -114,7 +114,7 @@ const Navbar = () => {
 
       {/* Mobile Dropdown Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-4 py-3 space-y-2 sticky top-16 z-40 shadow-sm">
+        <div className="md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-4 py-3 space-y-2 fixed top-16 w-full z-40 shadow-sm">
           <Link
             href="/pages/fivetran-partnership/ea-theme"
             className="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-accent_gray dark:text-white"
