@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 const SITES = [
   { id: "express", url: "https://expressanalytics.com" },
-  { id: "api_ea", url: "http://api.ea.net/" },
+  { id: "api_ea", url: "http://api.ea.net/" }, 
 ];
 
 async function checkSite(url: string) {

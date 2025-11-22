@@ -1,6 +1,8 @@
 import { GrLineChart } from "react-icons/gr";
 import { GoZap } from "react-icons/go";
-import { CiGlobe } from "react-icons/ci";
+import { CiGlobe, CiCircleCheck } from "react-icons/ci";
+import { GiOnTarget } from "react-icons/gi";
+import { FiShield } from "react-icons/fi";
 import { IconType } from "react-icons";
 
 interface SolutionCardProps {
@@ -15,9 +17,9 @@ const SolutionCard = ({
   description,
 }: SolutionCardProps) => {
   return (
-    <div className="bg-white dark:bg-primary_red p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-      <div className="bg-gray-100 dark:bg-primary_red w-16 h-16 rounded-lg flex items-center justify-center mb-4">
-        <Icon className="w-8 h-8 text-red-600 dark:text-white" />
+    <div className="bg-white dark:bg-primary-dark-gray p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-t-4 border-red-600 ">
+      <div className="bg-gray-100 dark:bg-secondary-dark-gray w-16 h-16 rounded-lg flex items-center justify-center mb-4">
+        <Icon className="w-8 h-8 text-red-600" />
       </div>
       <h3 className="text-2xl font-bold dark:text-white text-gray-900 mb-4">{title}</h3>
       <p className="text-gray-700 dark:text-white leading-relaxed">{description}</p>
@@ -49,7 +51,7 @@ const SolutionsSection = () => {
   ];
 
   return (
-    <section className="py-16 px-6 bg-gray-50 dark:bg-primary-dark-gray min-h-[50vh]">
+    <section className="py-16 px-6 bg-gray-50 dark:bg-secondary-dark-gray min-h-[50vh]">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
           Solutions & Capabilities

@@ -1,13 +1,13 @@
 // Overview Section Component
 const OverviewSection = () => {
   return (
-    <section className="py-16 px-6 bg-white dark:bg-secondary-dark-gray min-h-[50vh]">
+    <section className="py-16 px-6 bg-white dark:bg-primary-dark-gray min-h-[50vh]">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+        <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
           Simplifying Hybrid Data Integration
         </h2>
         <div className="grid md:grid-cols-2 gap-8 mb-8">
-          <div className="bg-white dark:bg-gray-800 dark:border dark:border-accent_gray p-8 rounded-lg drop-shadow-2xl flex flex-col ">
+          <div className="bg-red-50 dark:bg-gray-800 p-8 rounded-lg border-l-4 border-red-600 dark:border-primary_red">
             <p className="text-6xl font-bold text-red-600 dark:text-white mb-2">73%</p>
             <p className="text-lg text-gray-700 dark:text-white">
               of enterprise data remains unused and untapped for insights

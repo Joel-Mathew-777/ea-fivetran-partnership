@@ -6,6 +6,7 @@ import ExpertiseSection from "@/app/components/ea-theme-components/expertise";
 import BenefitsSection from "@/app/components/ea-theme-components/benefits";
 import SolutionsSection from "@/app/components/ea-theme-components/solutions";
 import OverviewSection from "@/app/components/ea-theme-components/overview";
+import StatusMonitor from "@/app/components/StatusMonitor";
 
 const eaTheme = () => {
   return (
@@ -18,6 +19,7 @@ const eaTheme = () => {
       <ExpertiseSection />
       <PressReleaseSection />
       <FooterSection />
+      <StatusMonitor />
     </div>
   );
 };

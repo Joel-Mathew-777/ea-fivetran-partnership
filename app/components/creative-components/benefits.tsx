@@ -4,7 +4,7 @@ import { CiCircleCheck } from "react-icons/ci";
 import { GiOnTarget } from "react-icons/gi";
 import { FiShield } from "react-icons/fi";
 import { IconType } from "react-icons";
-import Image from "next/image";
+import { Particles } from "./backgrounds/particles";
 
 interface BenefitItemProps {
   icon: IconType;
@@ -15,14 +15,12 @@ interface BenefitItemProps {
 // Benefit Item Component
 const BenefitItem = ({ icon: Icon, title, description }: BenefitItemProps) => {
   return (
-    <div className="flex gap-4 flex-1 items-center">
-      <div className="bg-red-100 dark:bg-primary_red p-3 rounded-lg">
-        <Icon className="w-6 h-6 text-red-600 dark:text-white" />
+    <div className="flex gap-4 items-center">
+      <div className="bg-red-100 dark:bg-gray-800 p-3 rounded-lg flex-shrink-0">
+        <Icon className="w-6 h-6 text-red-600" />
       </div>
       <div>
-        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
-          {title}
-        </h4>
+        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{title}</h4>
         <p className="text-gray-700 dark:text-white">{description}</p>
       </div>
     </div>
@@ -63,42 +61,25 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section className="py-16 px-6 bg-white dark:bg-[#374151] min-h-[50vh]">
-      <div className="max-w-6xl mx-auto flex flex-col items-center">
+    <section className="relative py-16 px-6 min-h-[50vh]">
+      <Particles 
+      className="absolute inset-0 w-full h-full overflow-hidden -z-1"/>
+      <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
           Partnership Benefits
         </h2>
-
         <p className="text-xl text-gray-600 dark:text-white mb-12 text-center">
           Tangible advantages for enterprises modernizing their data
           infrastructure
         </p>
-
-        {/* Centered Container */}
-        <div className="flex gap-12 flex-col md:flex-row items-center justify-center md:items-start mx-auto md:max-w-5xl">
-          {/* Left Image */}
-          <div className="w-[300px] h-full md:h-[420px]">
-            <Image
-              src="/eaabout1.webp"
-              width={300}
-              height={100}
-              className="w-full h-full object-cover object-top rounded-lg shadow-lg"
-              alt="Partnership Benefits Image"
-            />
-          </div>
-
-          {/* Right Side */}
-          <div className="flex flex-col gap-8 md:w-[540px] w-full md:h-[420px]">
-            <div className="flex flex-col h-full">
-              {benefits.map((benefit, index) => (
-                <BenefitItem key={index} {...benefit} />
-              ))}
-            </div>
-          </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          {benefits.map((benefit, index) => (
+            <BenefitItem key={index} {...benefit} />
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-export default BenefitsSection;
+export default BenefitsSection
