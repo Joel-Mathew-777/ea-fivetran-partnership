@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en" className="overflow-x-hidden max-w-full min-h-screen">
       <body className="bg-white dark:bg-primary-dark-gray max-w-full overflow-x-hidden">
         <Navbar />
-        <main className="mt-[20px]">{children}</main>
+        <main className="mt-[40px]">{children}</main>
       </body>
     </html>
   );
