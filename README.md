@@ -332,7 +332,6 @@ The color choices prioritize content accessibility while maintaining visual appe
 - **API:** Custom Next.js API routes
 
 ## Project Highlights
-
 - **Dual Theme System:** Demonstrates versatility in design implementation
 - **Real-Time Monitoring:** Live website status tracking with visual feedback
 - **Responsive Design:** Fully optimized for desktop, tablet, and mobile devices
