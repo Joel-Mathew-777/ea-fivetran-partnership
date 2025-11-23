@@ -9,7 +9,7 @@
 This project is a Next.js implementation of the Express Analytics × Fivetran partnership page, developed as part of the Full-Stack Developer assignment. The application features two distinct versions of the partnership page: one adhering to the Express Analytics brand theme and another showcasing a creative, alternative design approach.
 
 ### Live Demo
-**Vercel Deployment:** https://ea-fivetran-partnership-5e83sh2pj.vercel.app
+**Vercel Deployment:** https://ea-fivetran-partnership.vercel.app
 
 ### Design Reference
 **Figma Link (Creative Theme):** https://www.figma.com/design/KfthdUpgkbhix4maCaw3vL/EA-Fivetran?node-id=0-1&t=lDa0SeZLFPst1OKs-1
