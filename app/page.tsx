@@ -26,19 +26,13 @@ const buttons_links = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4">
-      {/* Header */}
-      <header className="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
-        <div className="max-w-6xl mx-auto pt-8 pb-6 py-4 min-h-[100px] flex justify-center items-center">
-          <h1 className="text-2xl font-bold text-gray-700 dark:text-white text-center">
-            Express Analytics × Fivetran
-          </h1>
-        </div>
-      </header>
-
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-6 py-16">
         {/* Hero Section */}
         <div className="text-center mb-16">
+          <h1 className="text-2xl font-bold text-gray-700 dark:text-white text-center">
+            Express Analytics × Fivetran
+          </h1>
           <h2 className="text-5xl font-bold text-gray-700 dark:text-white mb-6">
             Partnership Page Showcase
           </h2>
