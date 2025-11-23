@@ -16,7 +16,89 @@ This project is a Next.js implementation of the Express Analytics × Fivetran pa
 
 
 ---
+## Runing the App in Local Server
 
+### Prerequisites
+
+Before running the project locally, ensure you have the following installed:
+
+- **Node.js:** Version 18.0 or higher
+- **npm** or **yarn** or **pnpm:** Package manager
+
+### Installation Steps
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/Joel-Mathew-777/ea-fivetran-partnership.git
+   cd ea-fivetran-partnership
+   ```
+
+2. **Install Dependencies**
+   
+   Using npm:
+   ```bash
+   npm install
+   ```
+
+3. **Run the Development Server**
+   
+   Using npm:
+   ```bash
+   npm run dev
+   ```
+
+
+4. **Access the Application**
+   
+   Open your browser and navigate to:
+   ```
+   http://localhost:3000
+   ```
+
+3. **Build for Production**
+   
+   Using npm:
+   ```bash
+   npm run build
+   ```
+   then
+     ```bash
+   npm start
+   ```
+
+
+### Available Scripts
+
+- **`npm run dev`** - Starts the development server
+- **`npm run build`** - Creates an optimized production build
+- **`npm start`** - Runs the production build locally
+- **`npm run lint`** - Runs ESLint to check code quality
+
+### Environment Variables
+
+No environment variables are required for basic functionality. The application works out of the box with default configurations.
+
+### Troubleshooting
+
+**Port Already in Use:**
+If port 3000 is already occupied, Next.js will automatically use the next available port (3001, 3002, etc.)
+
+**Module Not Found Errors:**
+Delete `node_modules` and lock file, then reinstall:
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
+---
+
+## Technical Stack
+
+- **Framework:** Next.js (React-based)
+- **Language:** TypeScript
+- **Deployment:** Vercel
+- **Styling:** Component-based styling with theme support
+- **API:** Custom Next.js API routes
+---
 ## Website Status Monitor
 
 The application includes a real-time website status monitoring system that checks the availability and performance of specified URLs. This feature provides users with immediate feedback on the operational status of critical websites.
@@ -82,6 +164,39 @@ The system can accommodate any number of URLs without requiring code modificatio
 
 #### Fast, Non-Blocking Monitoring
 All URLs are checked in parallel using Promise.all, ensuring that multiple site checks don't create bottlenecks. This concurrent approach significantly reduces total monitoring time compared to sequential checking.
+
+### 6. Design Choices
+
+#### State Management Strategy
+
+The Website Status Monitor employs React's `useState` hook for managing component state, a deliberate architectural decision based on the component's structure and requirements.
+
+**Implementation Overview:**
+
+The component manages three pieces of local state:
+- **Status Data (`data`):** Stores API response containing website checks, timestamps, and metrics
+- **Loading State (`loading`):** Manages loading indicators during API calls
+- **Modal Visibility (`isOpen`):** Controls the status modal display
+
+**Rationale for useState:**
+
+This approach is optimal for the Status Monitor because the component maintains a self-contained architecture. All state is created, updated, and consumed within the same component, with no data sharing required across other parts of the application. The component directly renders all UI elements inline, including the floating button and modal, eliminating the need for prop passing.
+
+**Alternative Approaches Considered:**
+
+- **Context API (useContext):** While useful for avoiding prop drilling across deeply nested components, the Status Monitor has a flat hierarchy with no intermediate components passing props they don't use. Context would introduce unnecessary complexity without solving any existing problems.
+
+- **Redux/Redux Toolkit:** Enterprise-level state management solutions like Redux are designed for applications with complex global state requirements, multiple interconnected components, and sophisticated state orchestration needs. The Status Monitor's isolated functionality doesn't warrant this overhead.
+
+**Key Benefits:**
+
+- **No Prop Drilling:** The component's flat structure means props aren't passed through intermediate layers
+- **Simplified Maintenance:** All state logic is co-located, making the component easy to understand and modify
+- **Zero External Dependencies:** Keeps the bundle size minimal and reduces complexity
+
+**Future Scalability:**
+
+Should the application evolve to require status data across multiple disconnected components (such as displaying in the navbar, dashboard, and footer simultaneously), migration to Context API or Redux would be straightforward without breaking existing functionality.
 
 ---
 
