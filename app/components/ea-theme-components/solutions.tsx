@@ -15,8 +15,8 @@ const SolutionCard = ({
   description,
 }: SolutionCardProps) => {
   return (
-    <div className="bg-white dark:bg-primary_red p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-      <div className="bg-gray-100 dark:bg-primary_red w-16 h-16 rounded-lg flex items-center justify-center mb-4">
+    <div className="bg-[#fef2f2] dark:bg-primary_red p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+      <div className="w-full h-16 rounded-lg flex items-center text-center justify-center mb-4">
         <Icon className="w-8 h-8 text-red-600 dark:text-white" />
       </div>
       <h3 className="text-2xl font-bold dark:text-white text-gray-900 mb-4">{title}</h3>

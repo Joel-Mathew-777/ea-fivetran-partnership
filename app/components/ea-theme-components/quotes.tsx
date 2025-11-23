@@ -76,7 +76,7 @@ const PressReleaseSection = () => {
 
         {/* RIGHT SIDE SLIDER CARD */}
         <div className="relative">
-          <div className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-xl min-h-[300px] flex flex-col md:flex-row items-center md:items-start gap-6">
+          <div className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-xl min-h-[300px] flex flex-col md:flex-row items-center justify-center md:items-start gap-6">
 
             {/* WRAPPER FOR LEFT SIDE IMAGE */}
             <div className="flex flex-col items-center md:items-start">

@@ -36,7 +36,7 @@ const PressReleaseSection = () => {
     <section className="relative py-10 px-6 min-h-[50vh] bg-white dark:bg-transparent flex items-center justify-center">
       <div className="max-w-6xl mx-auto w-full">
         <div className="relative">
-          <div className={`bg-white dark:bg-secondary-dark-gray border-l-6 border-${quotes[currentSlide].color} p-8 min-h-[300px] flex-col md:flex-row rounded-lg shadow-lg md:min-h-[300px] flex items-center gap-6`}>
+          <div className={`bg-white dark:bg-secondary-dark-gray border-l-6 border-${quotes[currentSlide].color} p-8 min-h-[500px] flex-col md:flex-row rounded-lg shadow-lg md:min-h-[300px] flex items-center gap-6 sm:max-h-[500px]`}>
             <Image 
               src={quotes[currentSlide].image}
               width={100}
@@ -46,9 +46,9 @@ const PressReleaseSection = () => {
             />
             <div className={`border-l-4 border-${quotes[currentSlide].color} pl-6 flex-1 flex flex-col`}>
               <p className="text-lg text-gray-500 mb-2">
-                {quotes[currentSlide].name}, {quotes[currentSlide].title}
+                {quotes[currentSlide].name}, < br/> {quotes[currentSlide].title}
               </p>
-              <p className="text-lg text-gray-800 dark:text-white italic">
+              <p className="text-lg text-gray-800 dark:text-white italic sm:text-base">
                 "{quotes[currentSlide].quote}"
               </p>
             </div>

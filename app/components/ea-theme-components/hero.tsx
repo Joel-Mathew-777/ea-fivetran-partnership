@@ -39,13 +39,13 @@ const HeroSection = () => {
         <h1 className="text-5xl font-bold mb-6 leading-tight bg-gradient-to-r from-blue-600 via-red-600 to-purple-600 bg-clip-text text-transparent dark:text-white">
           Powering Enterprise Data Intelligence in the AI Era
         </h1>
-        <p className="text-xl mb-8 max-w-3xl text-accent_gray dark:text-gray-300">
+        <p className="text-xl mb-8 max-w-3xl text-accent_gray dark:text-gray-300 text-center">
           Express Analytics joins Fivetran Partner Program to deliver advanced
           data integration and analytics solutions across hybrid environments,
           accelerating insights and AI readiness.
         </p>
         <div className="flex gap-4">
-          <Link href={"https://www.expressanalytics.com/contact-us"} target="_blank" className="cursor-pointer animate-fadeInUp bg-gradient-to-r from-blue-600 via-red-600 to-purple-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-bold transition-colors">
+          <Link href={"https://www.expressanalytics.com/contact-us"} target="_blank" className="cursor-pointer animate-fadeInUp bg-gradient-to-r from-red-600 to-purple-600 hover:from-red-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-bold transition-colors">
             Talk to Us
           </Link>
           <Link

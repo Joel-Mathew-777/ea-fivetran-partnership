@@ -11,12 +11,29 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains("dark") || window.matchMedia("(prefers-color-scheme: dark)").matches || localStorage.getItem("theme") === "dark";
-    if (isDarkMode) {
+    const cachedTheme = localStorage.getItem("theme");
+
+    // 1. If user has manually selected a theme
+    if (cachedTheme) {
+      document.documentElement.classList.toggle("dark", cachedTheme === "dark");
+      setIsDark(cachedTheme === "dark");
+      return;
+    }
+
+    // 2. If no cached theme → detect system preference
+    const systemPrefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    if (systemPrefersDark) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
+      setIsDark(true);
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      setIsDark(false);
     }
-    setIsDark(isDarkMode);
   }, []);
 
   const toggleDarkMode = () => {
@@ -30,7 +47,6 @@ const Navbar = () => {
       <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 fixed top-[-4px] pb-[4px] left-0 w-full mt-1 z-50 shadow-sm -mt-px">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2 group">
               <Image
@@ -43,7 +59,9 @@ const Navbar = () => {
               <div className="flex flex-col leading-tight">
                 <span className="font-semibold text-[20px] text-primary_red">
                   express{" "}
-                  <span className="text-accent_gray dark:text-white">analytics</span>
+                  <span className="text-accent_gray dark:text-white">
+                    analytics
+                  </span>
                 </span>
                 <span className="text-[11px] text-accent_gray dark:text-white transition">
                   AI-Powered Smarter Marketing
@@ -55,14 +73,14 @@ const Navbar = () => {
             <div className="hidden md:flex items-center space-x-4">
               <Link
                 href="/pages/fivetran-partnership/ea-theme"
-                className="px-4 py-2 rounded-lg hover:bg-gray-200 font-bold dark:hover:bg-gray-800 transition text-accent_gray dark:text-white"
+                className="px-4 py-2 rounded-lg hover:bg-gray-200 font-bold dark:hover:bg-gray-800 transition text-gray-700 dark:text-white"
               >
                 EA Theme
               </Link>
 
               <Link
                 href="/pages/fivetran-partnership/creative"
-                className="px-4 py-2 rounded-lg hover:bg-gray-200 font-bold dark:hover:bg-gray-800 transition text-accent_gray dark:text-white"
+                className="px-4 py-2 rounded-lg hover:bg-gray-200 font-bold dark:hover:bg-gray-800 transition text-gray-700 dark:text-white"
               >
                 Creative Theme
               </Link>
@@ -83,7 +101,6 @@ const Navbar = () => {
 
             {/* Mobile Controls */}
             <div className="flex items-center md:hidden space-x-2">
-
               {/* Dark Mode Toggle (Mobile) */}
               <button
                 onClick={toggleDarkMode}
@@ -104,7 +121,10 @@ const Navbar = () => {
                 {menuOpen ? (
                   <FiX size={26} className="text-accent_gray dark:text-white" />
                 ) : (
-                  <FiMenu size={26} className="text-accent_gray dark:text-white" />
+                  <FiMenu
+                    size={26}
+                    className="text-accent_gray dark:text-white"
+                  />
                 )}
               </button>
             </div>
@@ -122,7 +142,7 @@ const Navbar = () => {
           >
             EA Theme
           </Link>
-          
+
           <Link
             href="/pages/fivetran-partnership/creative"
             className="block px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-accent_gray dark:text-white"

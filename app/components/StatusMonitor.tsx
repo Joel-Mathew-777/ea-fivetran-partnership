@@ -1,13 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Atom } from "react-loading-indicators";
-import { 
-  IoCheckmarkCircle, 
-  IoCloseCircle, 
-  IoClose, 
+import {
+  IoCheckmarkCircle,
+  IoCloseCircle,
+  IoClose,
   IoTime,
   IoSpeedometer,
-  IoRefresh
+  IoRefresh,
 } from "react-icons/io5";
 import { MdMonitor } from "react-icons/md";
 
@@ -21,7 +21,10 @@ type Check = {
 };
 
 export default function StatusMonitor() {
-  const [data, setData] = useState<{ timestamp: string; checks: Check[] } | null>(null);
+  const [data, setData] = useState<{
+    timestamp: string;
+    checks: Check[];
+  } | null>(null);
   const [loading, setLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -43,7 +46,8 @@ export default function StatusMonitor() {
     return () => clearInterval(interval);
   }, []);
 
-  const allOnline = data?.checks.every(c => c.ok) ?? false;
+  const allOnline = data?.checks.every((c) => c.ok) ?? false;
+  const allOffline = data?.checks.every((c) => !c.ok) ?? false;
 
   return (
     <>
@@ -58,15 +62,21 @@ export default function StatusMonitor() {
           {allOnline && (
             <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-20" />
           )}
-          
+
           {/* Main button */}
           <div className="relative w-16 h-16 bg-gradient-to-br from-[#DC1B36] to-red-700 hover:from-red-600 hover:to-red-800 rounded-2xl shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110 hover:shadow-xl">
             <MdMonitor className="w-7 h-7 text-white" />
-            
+
             {/* Status indicator dot */}
-            <div className={`absolute -top-1 -right-1 w-4 h-4 rounded-full border-2 border-white ${
-              allOnline ? 'bg-green-500' : 'bg-yellow-500'
-            } animate-pulse`} />
+            <div
+              className={`absolute -top-1 -right-1 w-4 h-4 rounded-full border-2 border-white ${
+                allOnline
+                  ? "bg-green-500"
+                  : allOffline
+                  ? "bg-red-500"
+                  : "bg-yellow-500"
+              } animate-pulse`}
+            />
           </div>
         </div>
       </button>
@@ -96,15 +106,18 @@ export default function StatusMonitor() {
               >
                 <IoClose className="w-5 h-5" />
               </button>
-              
+
               <div className="flex items-center gap-3 mb-2">
                 <MdMonitor className="w-8 h-8" />
                 <h2 className="text-2xl font-bold">System Status</h2>
               </div>
-              
+
               <div className="flex items-center gap-2 text-red-100 text-sm">
                 <IoTime className="w-4 h-4" />
-                <span>Updated {data ? new Date(data.timestamp).toLocaleTimeString() : '...'}</span>
+                <span>
+                  Updated{" "}
+                  {data ? new Date(data.timestamp).toLocaleTimeString() : "..."}
+                </span>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -123,30 +136,56 @@ export default function StatusMonitor() {
               {loading || !data ? (
                 <div aria-live="polite" className="text-center py-12">
                   <Atom color={["#DC1B36", "#686B6F"]} size="medium" />
-                  <p className="text-gray-500 dark:text-gray-400 mt-4">Loading status...</p>
+                  <p className="text-gray-500 dark:text-gray-400 mt-4">
+                    Loading status...
+                  </p>
                 </div>
               ) : (
                 <>
                   {/* Overall Status Banner */}
-                  <div className={`mb-6 p-4 rounded-xl flex items-center gap-3 ${
-                    allOnline 
-                      ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800' 
-                      : 'bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800'
-                  }`}>
+                  <div
+                    className={`mb-6 p-4 rounded-xl flex items-center gap-3 ${
+                      allOnline
+                        ? "bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
+                        : allOffline
+                        ? "bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800"
+                        : "bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800"
+                    }`}
+                  >
                     {allOnline ? (
                       <>
                         <IoCheckmarkCircle className="w-6 h-6 text-green-600 dark:text-green-400 flex-shrink-0" />
                         <div>
-                          <p className="font-semibold text-green-900 dark:text-green-100">All Systems Operational</p>
-                          <p className="text-xs text-green-700 dark:text-green-300">Everything is running smoothly</p>
+                          <p className="font-semibold text-green-900 dark:text-green-100">
+                            All Systems Operational
+                          </p>
+                          <p className="text-xs text-green-700 dark:text-green-300">
+                            Everything is running smoothly
+                          </p>
+                        </div>
+                      </>
+                    ) : allOffline ? (
+                      <>
+                        <IoCloseCircle className="w-6 h-6 text-red-600 dark:text-red-400 flex-shrink-0" />
+                        <div>
+                          <p className="font-semibold text-red-900 dark:text-red-100">
+                            All Systems Down
+                          </p>
+                          <p className="text-xs text-red-700 dark:text-red-300">
+                            All services are currently unavailable
+                          </p>
                         </div>
                       </>
                     ) : (
                       <>
                         <IoCloseCircle className="w-6 h-6 text-yellow-600 dark:text-yellow-400 flex-shrink-0" />
                         <div>
-                          <p className="font-semibold text-yellow-900 dark:text-yellow-100">Partial Outage Detected</p>
-                          <p className="text-xs text-yellow-700 dark:text-yellow-300">Some services are unavailable</p>
+                          <p className="font-semibold text-yellow-900 dark:text-yellow-100">
+                            Partial Outage Detected
+                          </p>
+                          <p className="text-xs text-yellow-700 dark:text-yellow-300">
+                            Some services are unavailable
+                          </p>
                         </div>
                       </>
                     )}
@@ -160,10 +199,12 @@ export default function StatusMonitor() {
                         className="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4 hover:shadow-md transition-all duration-200"
                       >
                         {/* Status indicator stripe */}
-                        <div className={`absolute left-0 top-0 bottom-0 w-1 ${
-                          c.ok ? 'bg-green-500' : 'bg-red-500'
-                        }`} />
-                        
+                        <div
+                          className={`absolute left-0 top-0 bottom-0 w-1 ${
+                            c.ok ? "bg-green-500" : "bg-red-500"
+                          }`}
+                        />
+
                         <div className="pl-3">
                           {/* URL and Status */}
                           <div className="flex items-start justify-between gap-3 mb-3">
@@ -172,12 +213,14 @@ export default function StatusMonitor() {
                                 {c.url}
                               </p>
                             </div>
-                            
-                            <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
-                              c.ok 
-                                ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300' 
-                                : 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
-                            }`}>
+
+                            <div
+                              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
+                                c.ok
+                                  ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
+                                  : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300"
+                              }`}
+                            >
                               {c.ok ? (
                                 <>
                                   <IoCheckmarkCircle className="w-3.5 h-3.5" />
@@ -197,16 +240,18 @@ export default function StatusMonitor() {
                             {c.status !== null && (
                               <div className="flex items-center gap-1">
                                 <span className="font-medium">Status:</span>
-                                <span className={`px-2 py-0.5 rounded ${
-                                  c.status >= 200 && c.status < 300 
-                                    ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
-                                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
-                                }`}>
+                                <span
+                                  className={`px-2 py-0.5 rounded ${
+                                    c.status >= 200 && c.status < 300
+                                      ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
+                                      : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                                  }`}
+                                >
                                   {c.status}
                                 </span>
                               </div>
                             )}
-                            
+
                             {c.responseTimeMs && (
                               <div className="flex items-center gap-1.5">
                                 <IoSpeedometer className="w-3.5 h-3.5" />
